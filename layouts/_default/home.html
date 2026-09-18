@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="ledger">
+  {{ with .Content }}
+    <div class="intro-prose">{{ . }}</div>
+  {{ end }}
+
+  <ul class="entry-stream">
+    {{ range where .Site.RegularPages "Type" "in" (slice "writings") }}
+      <li class="entry-row">
+        <time>{{ .Date.Format "2006" }}</time>
+        <div class="entry-meta">
+          <a class="entry-title" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+          {{ with .Params.coordinates }}
+            <span class="coord-wrapper">[
+              {{- range $i, $e := . -}}
+                {{- if $i }} · {{ end -}}
+                <a href="{{ printf "/coordinates/%s/" (. | urlize) | relLangURL }}" 
+                   class="coord-tag coord-{{ . | urlize }}">{{ . | upper }}</a>
+              {{- end -}}
+            ]</span>
+          {{ end }}
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

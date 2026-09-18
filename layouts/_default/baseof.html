@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.LanguageCode }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if not .IsHome }}{{ .Title | plainify }} · {{ end }}{{ .Site.Title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  {{ with resources.Get "style.css" | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+  {{ end }}
+  {{ if or .Params.math site.Params.math }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+      onload="renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });"></script>
+    {{ end }}
+</head>
+<body>
+  <header class="masthead">
+    <div>
+      <a class="site-title" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+    </div>
+    <nav class="lang-nav">
+      {{ if .IsTranslated }}
+        {{ range .Translations }}
+          <a href="{{ .RelPermalink }}" class="lang-switch">{{ .Language.LanguageName }}</a>
+        {{ end }}
+      {{ else }}
+        {{ range .AllTranslations }}
+          {{ if ne .Lang $.Lang }}
+            <a href="{{ .RelPermalink }}" class="lang-switch">{{ .Language.LanguageName }}</a>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </nav>
+  </header>
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer class="colophon">
+    {{ if eq .Language.Lang "es" }}
+      <p>Para consultas y comentarios, escribir a <a href="mailto:aossorio@fi.uba.ar">aossorio@fi.uba.ar</a></p>
+    {{ else }}
+      <p>For questions, notes, and correspondence, write to <a href="mailto:aossorio@fi.uba.ar">aossorio@fi.uba.ar</a></p>
+    {{ end }}
+  </footer>
+</body>
+</html>

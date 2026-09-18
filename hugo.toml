@@ -1,0 +1,26 @@
+baseURL = "https://example.org/"
+title = "A.J. Ossorio Arana"
+defaultContentLanguage = "en"
+
+[taxonomies]
+  coordinate = "coordinates"
+
+[params]
+  math = true  # Enables KaTeX site-wide by default
+
+[languages]
+  [languages.en]
+    languageCode = "en-US"
+    languageName = "English"
+    weight = 1
+    [languages.en.params]
+      location = "Northern Patagonia, Argentina"
+      archiveTitle = "Writings"
+
+  [languages.es]
+    languageCode = "es-AR"
+    languageName = "Español"
+    weight = 2
+    [languages.es.params]
+      location = "San Martín de los Andes, Patagonia"
+      archiveTitle = "Escritos"

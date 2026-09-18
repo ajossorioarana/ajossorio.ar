@@ -1,0 +1,302 @@
+:root {
+  --bg: #fdfbf7;
+  --text: hsl(0, 0%, 11%);
+  --footnote: hsl(0, 0%, 50%);
+  --muted: #6b6964;
+  --rule: #dedad2;
+  /* Coordinate Inks */
+  --ink-physis: #246d4b;   /* Fir / Malachite green */
+  --ink-techne: #1c578a;   /* Cobalt / Blueprint blue */
+  --ink-polis:  #9e5c18;   /* Roman Ochre / Architectural Terra Cotta */
+  --ink-logos:  #942b26;   /* Rich Venetian madder / Carmine */
+ 
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Alegreya", Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  max-width: 75ch;
+  padding: 3rem 1.5rem;
+}
+
+/* Masthead */
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.0rem;
+  margin-bottom: 1rem;
+}
+
+.site-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: none;
+  display: inline-block;
+}
+
+.site-title:hover,
+.site-title:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+  opacity: 0.75;
+}
+
+.site-sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.lang-switch {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  /* font-style: italic; */
+}
+.lang-switch:hover { color: var(--text); }
+
+/* Ledger (home & lists) */
+.entry-stream { list-style: none; padding: 0; margin: 0.5rem 0; }
+.entry-row { display: flex; margin-bottom: 1rem; align-items: center; }
+
+.entry-row time {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  width: 2.5rem;          /* Snug column width for a 4-digit year */
+  flex-shrink: 0;
+  text-align: right;       /* Pushes the digits toward the title */
+  margin-right: 0.60rem;   /* The exact gap between year and title */
+}
+.entry-title { 
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.entry-title:hover { 
+  text-decoration: underline;
+}
+
+/* 1. Article Page Meta (Keep the 2.5rem bottom spacing ONLY for article views) */
+.entry-header .entry-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* 2. Ledger Row Meta (Zero out margins so rows stay compact) */
+.entry-row .entry-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.meta-sep {
+  margin: 0 0.45rem;
+  opacity: 0.5;
+}
+
+.coord-wrapper {
+  margin-left: 0.4rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--muted); /* Brackets and dots stay muted */
+}
+
+/* Coordinate Links & Hover */
+.coord-tag,
+.coord-wrapper a {
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted); /* Fallback */
+  transition: opacity 0.15s ease;
+}
+
+.coord-tag:hover,
+.coord-wrapper a:hover {
+  text-decoration: underline;
+  opacity: 0.75;
+}
+
+/* Individual Taxonomy Tinting (Specific selectors to guarantee override) */
+a.coord-physis, .coord-physis { color: var(--ink-physis); }
+a.coord-techne, .coord-techne { color: var(--ink-techne); }
+a.coord-polis,  .coord-polis  { color: var(--ink-polis);  }
+a.coord-logos,  .coord-logos  { color: var(--ink-logos);  }
+
+/* Article Page */
+.reading-leaf h1 { font-size: 2.1rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.5rem; }
+.entry-header time { font-size: 0.9rem; color: var(--muted); }
+.prose p { margin: 1.5rem 0; }
+
+/* Taxonomy / Section Header */
+.section-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.25rem;
+}
+
+.section-header h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.4rem;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Footnotes & Colophon */
+/* Suppress Goldmark's injected <hr> to prevent the double bar */
+.footnotes hr {
+  display: none;
+}
+
+.footnotes {
+  margin-top: 2.5rem;
+  padding-top: 0.0rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* In-text footnote reference */
+a.footnote-ref,
+.footnote-ref a,
+a[href^="#fn:"],
+a[href^="#fn:"]:link,
+a[href^="#fn:"]:visited {
+  color: var(--footnote) !important;
+  font-weight: 500 !important;
+  font-size: 1.2em;
+  letter-spacing: 0.03em;
+  text-decoration: none !important;
+}
+
+/* Target the return arrow at the bottom */
+a.footnote-backref,
+.footnote-backref,
+a[href^="#fnref:"],
+a[href^="#fnref:"]:link,
+a[href^="#fnref:"]:visited {
+  color: var(--footnote) !important;
+  font-weight: 500 !important;
+  font-size: 1.2em;
+  letter-spacing: 0.03em;
+  text-decoration: none !important;
+}
+
+/* Hover feedback */
+a.footnote-ref:hover,
+.footnote-ref a:hover,
+a[href^="#fn:"]:hover {
+  text-decoration: underline !important;
+}
+
+a.footnote-backref:hover,
+.footnote-backref:hover,
+a[href^="#fnref:"]:hover {
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+/* Colophon (Footer) */
+.colophon {
+  margin-top: 1.5rem;
+  padding-top: 0rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.colophon a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.colophon a:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Intro Proem on Homepage */
+.intro-prose {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.intro-prose p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+}
+
+/* Base link behavior inside the intro proem */
+.intro-prose a {
+  text-decoration: none;
+  border-bottom: none;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.intro-prose a:hover,
+.intro-prose a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Coordinate Inks */
+.intro-prose a[href*="/physis/"] { color: var(--ink-physis); font-weight: 550; }
+.intro-prose a[href*="/techne/"] { color: var(--ink-techne); font-weight: 550; }
+.intro-prose a[href*="/polis/"]  { color: var(--ink-polis);  font-weight: 550; }
+.intro-prose a[href*="/logos/"]  { color: var(--ink-logos);  font-weight: 550; }
+
+/* Blockquotes */
+blockquote {
+  margin: 2rem 0;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0.75rem 0;
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}

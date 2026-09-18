@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article class="reading-leaf">
+  <header class="entry-header">
+    <h1>{{ .Title | markdownify }}</h1>
+    <div class="entry-meta">
+      {{- if .Date -}}
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+          {{- time.Format "January 2006" .Date | humanize -}}
+        </time>
+      {{- end -}}
+      {{- with .Params.coordinates -}}
+        <span class="coord-wrapper">[
+          {{- range $i, $e := . -}}
+            {{- if $i }} · {{ end -}}
+            <a href="{{ printf "/coordinates/%s/" (. | urlize) | relLangURL }}" class="coord-{{ . | urlize }}">{{ . | upper }}</a>
+          {{- end -}}
+        ]</span>
+      {{- end -}}
+    </div>
+  </header>
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

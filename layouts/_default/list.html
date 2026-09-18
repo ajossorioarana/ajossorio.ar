@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="ledger">
+  <header class="section-header">
+    <h1 class="section-title{{ with .Data.Term }} coord-{{ . | urlize }}{{ end }}">{{ .Title | upper }}</h1>
+    {{ with .Description }}
+      <p class="section-desc">{{ . }}</p>
+    {{ end }}
+    {{ with .Content }}
+      <div class="section-prose">{{ . }}</div>
+    {{ end }}
+  </header>
+
+  <ul class="entry-stream">
+    {{ range .Pages }}
+      <li class="entry-row">
+        <time>{{ .Date.Format "2006" }}</time>
+        <div class="entry-meta">
+          <a class="entry-title" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+          {{ with .Params.coordinates }}
+            <span class="coord-wrapper">[
+              {{- range $i, $e := . -}}
+                {{- if $i }} · {{ end -}}
+                <a href="{{ printf "/coordinates/%s/" (. | urlize) | relLangURL }}" class="coord-tag coord-{{ . | urlize }}">{{ . | upper }}</a>
+              {{- end -}}
+            ]</span>
+          {{ end }}
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
