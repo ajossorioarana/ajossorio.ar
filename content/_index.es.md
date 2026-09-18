@@ -1,5 +1,5 @@
 ---
-description: "Una colección de ensayos sobre aguas naturales y ecosistemas, el oficio práctico y la construcción, la vida de los pueblos y las familias, y la tradición intelectual de Occidente."
+description: "Felix, qui potuit rerum cognoscere causas"
 ---
 Una colección de ensayos sobre aguas naturales y ecosistemas, el oficio práctico y la construcción, la vida de los pueblos y las familias, y la tradición intelectual de Occidente.
 
