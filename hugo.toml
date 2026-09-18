@@ -7,6 +7,8 @@ defaultContentLanguage = "en"
 
 [params]
   math = true  # Enables KaTeX site-wide by default
+  favicon = "logo_ocre-cropped.svg"
+  share_image = "logo_ocre_1.png"
 
 [languages]
   [languages.en]

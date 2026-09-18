@@ -2,6 +2,7 @@
 title: "From *Ordo Naturæ* to the Catchment Basin with γ-λ relationship"
 date: 2026-09-17
 coordinates: ["physis", "logos"]
+description: "What Aristotelian teleology can tell us about the watershed."
 ---
 Modern hydrology treats catchments as statistical systems.[^1] 
 Classical physics approached nature with the concept of teleological order.

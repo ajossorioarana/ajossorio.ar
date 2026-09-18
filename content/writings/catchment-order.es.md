@@ -2,6 +2,7 @@
 title: "Del *Ordo Naturæ* a la Cuenca Hidrológica mediante relación γ-λ"
 date: 2026-09-17
 coordinates: ["physis", "logos"]
+description: "Que puede enseñarnos la teleología Aristotélica acerca de la cuenca."
 ---
 La hidrología moderna trata las cuencas como sistemas estadísticos.[^1]
 La física clásica abordaba la naturaleza bajo el concepto de orden teleológico.

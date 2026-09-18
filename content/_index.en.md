@@ -1,4 +1,5 @@
 ---
+description: "A collection of essays on natural waters and ecosystems, practical craft and building, the life of towns and families, and the Western intellectual tradition."
 ---
 A collection of essays on natural waters and ecosystems, practical craft and building, the life of towns and families, and the Western intellectual tradition.
 

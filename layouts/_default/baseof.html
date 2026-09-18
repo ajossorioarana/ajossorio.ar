@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ if not .IsHome }}{{ .Title | plainify }} · {{ end }}{{ .Site.Title }}</title>
+  <title>{{ if not .IsHome }}{{ .Title | markdownify | plainify }} - {{ end }}{{ .Site.Title }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -22,6 +22,28 @@
         throwOnError: false
       });"></script>
     {{ end }}
+     {{ with site.Params.favicon }}
+      <link rel="icon" href="{{ . | absURL }}">
+    {{ end }}
+    {{/* WhatsApp & Social Share Image (600x600 PNG) */}}
+    {{ with site.Params.share_image }}
+      {{ with resources.Get . }}
+        {{ $processed := .Fill "600x600 png" }}
+        <meta property="og:image" content="{{ $processed.Permalink }}">
+        <meta property="og:image:width" content="600">
+        <meta property="og:image:height" content="600">
+        <meta property="og:image:type" content="image/png">
+      {{ end }}
+    {{ end }}
+    {{/* WhatsApp Preview Description */}}
+    {{ with .Params.description }}
+      <meta property="og:description" content="{{ . }}">
+    {{ else with .Description }}
+      <meta property="og:description" content="{{ . }}">
+    {{ else with .Summary }}
+      <meta property="og:description" content="{{ . | plainify }}">
+    {{ end }}
+</head>
 </head>
 <body>
   <header class="masthead">
