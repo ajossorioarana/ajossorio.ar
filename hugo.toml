@@ -12,16 +12,16 @@ defaultContentLanguage = "en"
 
 [languages]
   [languages.en]
-    languageCode = "en-US"
-    languageName = "English"
+    locale = "en-US"
+    label = "English"
     weight = 1
     [languages.en.params]
       location = "Northern Patagonia, Argentina"
       archiveTitle = "Writings"
 
   [languages.es]
-    languageCode = "es-AR"
-    languageName = "Español"
+    locale = "es-AR"
+    label = "Español"
     weight = 2
     [languages.es.params]
       location = "San Martín de los Andes, Patagonia"
