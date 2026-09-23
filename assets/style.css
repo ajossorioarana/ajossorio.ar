@@ -21,7 +21,7 @@ body {
   font-size: 1.25rem;
   line-height: 1.75;
   margin: 0 auto;
-  max-width: 75ch;
+  max-width: 70ch;
   padding: 3rem 1.5rem;
 }
 
@@ -145,8 +145,15 @@ a.coord-logos,  .coord-logos  { color: var(--ink-logos);  }
 
 /* Article Page */
 .reading-leaf h1 { font-size: 2.1rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.5rem; }
+
 .entry-header time { font-size: 0.9rem; color: var(--muted); }
-.prose p { margin: 1.5rem 0; }
+
+.prose p { 
+  margin: 1.5rem 0;
+  text-align: justify;
+  hyphens: auto;/* Backstop: ensures long words don't create sudden gaping holes */
+  text-wrap: pretty;  /* Prevents awkward, single-word final lines */
+}
 
 /* Taxonomy / Section Header */
 .section-header {
@@ -170,6 +177,14 @@ a.coord-logos,  .coord-logos  { color: var(--ink-logos);  }
   line-height: 1.6;
 }
 
+/* Prevent footnote superscripts from disrupting paragraph line-height */
+sup {
+  line-height: 0;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.45em; /* Shift upward visually without expanding the line box */
+}
+
 /* Footnotes & Colophon */
 /* Suppress Goldmark's injected <hr> to prevent the double bar */
 .footnotes hr {
@@ -185,6 +200,12 @@ a.coord-logos,  .coord-logos  { color: var(--ink-logos);  }
   color: var(--muted);
 }
 
+.footnotes p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
 /* In-text footnote reference */
 a.footnote-ref,
 .footnote-ref a,
@@ -193,7 +214,7 @@ a[href^="#fn:"]:link,
 a[href^="#fn:"]:visited {
   color: var(--footnote) !important;
   font-weight: 500 !important;
-  font-size: 1.2em;
+  font-size: 0.8em;
   letter-spacing: 0.03em;
   text-decoration: none !important;
 }
